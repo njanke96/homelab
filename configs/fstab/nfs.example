@@ -1,0 +1,2 @@
+# example fstab line for connecting to nfs exported by unraid
+vunraid.localdomain:/mnt/user/drive /mnt/user/drive nfs defaults,hard,timeo=50,retrans=5,relatime,rsize=1048576,wsize=1048576 0 0
