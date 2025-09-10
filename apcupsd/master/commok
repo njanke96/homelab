@@ -1,0 +1,21 @@
+#!/bin/sh
+#
+# This shell script if placed in /etc/apcupsd
+# will be called by /etc/apcupsd/apccontrol when apcupsd
+# restores contact with the UPS (i.e. the serial connection is restored).
+# An email notification is sent to the $SYSADMIN email address defined in /etc/apcupsd/apccontrol.
+#
+
+HOSTNAME=`hostname`
+MSG="$HOSTNAME Communications with UPS $1 restored"
+FROM="nathanjanke96@gmail.com"
+TO="root"
+#
+(
+   echo "From: $FROM"
+   echo "To: $TO"
+   echo "$MSG"
+   echo " "
+   /usr/sbin/apcaccess status
+) | sendmail -t -f root
+exit 0

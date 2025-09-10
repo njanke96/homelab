@@ -1,0 +1,15 @@
+#!/bin/sh
+
+HOSTNAME=`hostname`
+MSG="$HOSTNAME Communications with UPS $1 lost!"
+FROM="nathanjanke96@gmail.com"
+TO="root"
+#
+(
+   echo "From: $FROM"
+   echo "To: $TO"
+   echo "$MSG"
+   echo " "
+   /usr/sbin/apcaccess status
+) | sendmail -t -f root
+exit 0
