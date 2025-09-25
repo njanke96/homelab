@@ -10,7 +10,8 @@ sudo apt install -y qemu-guest-agent
 
 # Essential Packages
 sudo apt install -y neovim \
-  htop
+  htop \
+  nfs-common
 
 # Docker
 curl -fsSL https://get.docker.com -o get-docker.sh
