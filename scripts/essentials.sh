@@ -43,6 +43,7 @@ npm install -g dockerfile-language-server-nodejs
 npm install -g @microsoft/compose-language-service
 npm install -g bash-language-server
 
+mkdir -p "$HOME/.config/helix"
 curl -o "$HOME/.config/helix/config.toml" "https://raw.githubusercontent.com/njanke96/homelab/master/configs/helix/config.toml"
 
 echo ""
