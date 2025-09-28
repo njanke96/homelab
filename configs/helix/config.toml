@@ -1,0 +1,5 @@
+# Good for SSH?
+theme = "base16_default"
+
+[editor]
+bufferline = "multiple"
