@@ -1,26 +1,26 @@
 #!/bin/bash
 
 DEST_DIR="$HOME/mcbackups"
-REMOTE_DIR="/mnt/documents/mcbackups"
+REMOTE_DIR="/mnt/user/backbox/mcbackups/$(hostname)"
 
 echo "Dest dir: $DEST_DIR"
 echo "Remote dir: $REMOTE_DIR"
 
 # These function will need additional lines for new servers in the future.
 #
-function servers_say () {
-    docker exec mc-survival mc-send-to-console say "$1"
-    #docker exec mc-reindev mc-send-to-console say "$1"
+function servers_say() {
+  docker exec --user 1000:1000 mc-endventure mc-send-to-console say "$1"
 }
 
 function servers_stop() {
-    docker stop mc-survival
-    #docker stop mc-reindev
+  docker stop mc-endventure
 }
 
 function servers_start() {
-    docker start mc-survival
-    #docker start mc-reindev
+  docker start mc-endventure
+}
+function do_backup() {
+  tar --exclude="**/bluemap/*" -czvf "$DEST_DIR/$BACKUP_FILENAME" "mc/endventure"
 }
 
 # 60 second warning
@@ -49,7 +49,7 @@ mkdir -p "$REMOTE_DIR"
 # Create it on the local storage so the server is down for the minimum amount of time
 echo Creating the archive
 cd "$HOME" || exit
-tar --exclude="**/bluemap/*" -czvf "$DEST_DIR/$BACKUP_FILENAME" "mc/survival3"
+do_backup
 
 # start servers
 echo Starting servers
