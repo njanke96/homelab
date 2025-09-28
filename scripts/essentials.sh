@@ -12,7 +12,6 @@ echo 'essentials: Essential Packages'
 sudo apt install -y neovim \
   htop \
   nfs-common \
-  wget \
   curl
 
 echo 'essentials: Docker'
@@ -24,12 +23,17 @@ echo 'essentials: dtop'
 curl -sSfL https://amir20.github.io/dtop/install.sh | bash
 
 echo 'essentials: NodeJS'
-wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
+curl -sSfL https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
+
+NVM_DIR="$HOME/.nvm";
+source "$NVM_DIR/nvm.sh";
+
 nvm install --lts
 nvm alias default 'lts/*'
 nvm use 'lts/*'
 
 echo 'essentials: Helix & Relevant Language support'
+
 sudo add-apt-repository ppa:maveonair/helix-editor
 sudo apt update
 sudo apt install helix
@@ -39,7 +43,7 @@ npm install -g dockerfile-language-server-nodejs
 npm install -g @microsoft/compose-language-service
 npm install -g bash-language-server
 
-wget -O "$HOME/.config/helix/config.toml" "https://github.com/njanke96/homelab/tree/master/configs/helix/config.toml"
+curl -o "$HOME/.config/helix/config.toml" "https://raw.githubusercontent.com/njanke96/homelab/master/configs/helix/config.toml"
 
 echo ""
 echo "---"
