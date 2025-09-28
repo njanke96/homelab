@@ -1,2 +1,2 @@
 # example fstab line for connecting to nfs exported by unraid
-vunraid.localdomain:/mnt/user/drive /mnt/user/drive nfs defaults,hard,timeo=50,retrans=5,relatime,rsize=1048576,wsize=1048576 0 0
+vunraid.localdomain:/mnt/user/backbox /mnt/user/backbox nfs defaults,hard,timeo=50,retrans=5,relatime,rsize=1048576,wsize=1048576,x-systemd.automount,x-systemd.idle-timeout=300s 0 0
